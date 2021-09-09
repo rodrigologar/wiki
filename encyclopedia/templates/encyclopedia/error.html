@@ -1,0 +1,9 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error - Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Error: Page for <a href="{% url 'entries' title %}">{{ title }}</a> already exists.</h1>
+{% endblock %}

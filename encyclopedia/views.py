@@ -37,5 +37,20 @@ def search(request):
         })
         
 def new_page(request):
-    return render(request, "encyclopedia/new_page.html")
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("info")
+        
+        if util.get_entry(title) != None:
+            return render(request, "encyclopedia/error.html", {
+                "title":title
+            })
+        else:
+            util.save_entry(title, content)
+            return render(request, "encyclopedia/entries.html", {
+                "title":title,
+                "entry":methods.mdConversion(content)
+            })
+    else:
+        return render(request, "encyclopedia/new_page.html")
 
