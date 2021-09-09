@@ -1,0 +1,3 @@
+# Elon Musk
+
+Elon Reeve Musk is an entrepreneur and business magnate. He is the founder, CEO, and Chief Engineer at [SpaceX](https://www.spacex.com/); early stage investor, CEO, and Product Architect of [Tesla, Inc.](https://www.tesla.com/); founder of [The Boring Company](https://www.boringcompany.com/); and co-founder of [Neuralink](https://neuralink.com/) and [OpenAI](https://openai.com/). A **centibillionaire**, Musk is one of the richest people in the world. 

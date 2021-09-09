@@ -1,4 +1,5 @@
 import markdown2
+from random import randint
 
 from . import util
 
@@ -13,3 +14,10 @@ def mdConversion(title):
     html = markdown2.markdown(page)
     
     return html
+
+def randomPageGenerator():
+    max = len(util.list_entries())
+    
+    entry = randint(0, (max - 1))
+    
+    return entry

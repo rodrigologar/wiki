@@ -1,6 +1,7 @@
 from django.http import request
 from django.shortcuts import redirect, render
 from django import forms
+from django.http import HttpResponse
 
 from . import methods
 from . import util
@@ -11,6 +12,13 @@ def index(request):
     })
     
 def entries(request, title):
+    if request.method == "POST":
+        content = util.get_entry(title)
+        return render(request, "encyclopedia/edit_page.html", {
+            "title":title,
+            "content":content
+        })
+        
     return render(request, "encyclopedia/entries.html", {
         "title": title,
         "entry": methods.mdConversion(title)
@@ -40,7 +48,7 @@ def new_page(request):
     if request.method == "POST":
         title = request.POST.get("title")
         content = request.POST.get("info")
-        
+
         if util.get_entry(title) != None:
             return render(request, "encyclopedia/error.html", {
                 "title":title
@@ -49,8 +57,28 @@ def new_page(request):
             util.save_entry(title, content)
             return render(request, "encyclopedia/entries.html", {
                 "title":title,
-                "entry":methods.mdConversion(content)
+                "entry":methods.mdConversion(title)
             })
-    else:
-        return render(request, "encyclopedia/new_page.html")
+            
+    return render(request, "encyclopedia/new_page.html")
 
+def edit_page(request):
+    title = request.GET["title"]
+    content = request.GET["info"]
+        
+    util.save_entry(title, content)
+        
+    return render(request, "encyclopedia/entries.html", {
+            "title":title,
+            "entry":methods.mdConversion(title)
+    })
+    
+def random(request):
+    entries = util.list_entries()
+    index = methods.randomPageGenerator()
+    random_entry = entries[index]
+    
+    return render(request, "encyclopedia/entries.html", {
+        "title":random_entry,
+        "entry":methods.mdConversion(random_entry)
+    })
