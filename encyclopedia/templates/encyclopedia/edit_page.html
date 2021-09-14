@@ -5,17 +5,19 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{% url 'edit_page' %}" method="get">
-        <label for="title">Title</label>
-        <div class="title_input">
-            <input type="text" name="title" placeholder="Title" value="{{ title }}" autofocus required>
-        </div>
-        <label for="info">Information</label>
-        <div class="markdown_textarea">
-            <textarea name="info" id="info" cols="10" rows="5" placeholder="Here you can write all the information in Markdown." required>{{ content }}</textarea>
-        </div>
-        <div class="submit">
-            <input type="submit" value="Save">
-        </div>
-    </form>
+    <div id="new-edit" class="container">
+        <form action="{% url 'edit_page' %}" method="get">
+            <label for="title">Title</label>
+            <div class="title-input">
+                <input type="text" name="title" placeholder="Title" value="{{ title }}" autofocus required>
+            </div>
+            <label for="info">Information</label>
+            <div class="markdown-textarea">
+                <textarea name="info" id="info" cols="10" rows="5" placeholder="Here you can write all the information in Markdown." required>{{ content }}</textarea>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 {% endblock %}

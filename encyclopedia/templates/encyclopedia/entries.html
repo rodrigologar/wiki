@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    {{ entry|safe }}
-    <form action="{% url 'entries' title %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="Edit">
-    </form>
+    <div id="entries" class="container">
+        {{ entry|safe }}
+        <form action="{% url 'entries' title %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit">
+        </form>
+    </div>
 {% endblock %}

@@ -5,15 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{% url 'new_page' %}" method="post">
-        {% csrf_token %}
-        <label for="title">Title</label>
-        <div class="title_input">
-            <input type="text" name="title" placeholder="Title" autofocus required>
-        </div>
-        <label for="info">Information</label>
-        <div class="markdown_textarea">
-            <textarea name="info" id="info" cols="10" rows="5" placeholder="# Title of your Page
+    <div id="new-edit" class="container">
+        <form action="{% url 'new_page' %}" method="post">
+            {% csrf_token %}
+            <label for="title">Title</label>
+            <div class="title-input">
+                <input type="text" name="title" placeholder="Title" autofocus required>
+            </div>
+            <label for="info">Information</label>
+            <div class="markdown-textarea">
+                <textarea name="info" id="info" placeholder="# Title of your Page
 
 Everything you want to write about the page where you can include:
 
@@ -23,9 +24,10 @@ Everything you want to write about the page where you can include:
 
 - list item
 - another list item" required></textarea>
-        </div>
-        <div class="submit">
-            <input type="submit" value="Save">
-        </div>
-    </form>
+            </div>
+            <div class="submit">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 {% endblock %}
