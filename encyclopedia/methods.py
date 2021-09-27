@@ -8,12 +8,14 @@ def mdConversion(title):
     
     if not page:
         notFound = "<h1>Page not Found</h1>"
+        value = "Create Page"
         
-        return notFound
+        return {"html": notFound, "value": value}
     
     html = markdown2.markdown(page)
+    value = "Edit"
     
-    return html
+    return {"html": html, "value": value}
 
 def randomPageGenerator():
     max = len(util.list_entries())
